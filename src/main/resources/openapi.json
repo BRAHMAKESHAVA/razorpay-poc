@@ -1,0 +1,2614 @@
+{
+  openapi: "3.1.0",
+  info: {
+    title: "Stylo Customer Swagger API",
+    description: "API documentation for Stylo Customer"
+  },
+  servers: [
+    {
+      url: "http://localhost:9091",
+      description: "Local Development Server"
+    }
+  ],
+  security: [
+    {
+      bearerAuth: []
+    }
+  ],
+  paths: {
+    /user/{
+  userId
+}: {
+get: {
+tags: [
+"user-controller"
+],
+operationId: "getUserById",
+parameters: [
+{
+name: "userId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseUserRegisterResponseDTO"
+}
+}
+}
+}
+}
+},
+put: {
+tags: [
+"user-controller"
+],
+operationId: "updateUser",
+parameters: [
+{
+name: "userId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/UserUpdateRequestDTO"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseUserRegisterResponseDTO"
+}
+}
+}
+}
+}
+}
+},
+/api/services/{serviceId}: {
+get: {
+tags: [
+"salon-service-controller"
+],
+operationId: "getServiceById",
+parameters: [
+{
+name: "serviceId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "object"
+}
+}
+}
+}
+}
+},
+put: {
+tags: [
+"salon-service-controller"
+],
+operationId: "updateService",
+parameters: [
+{
+name: "serviceId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/UpdateServiceRequest"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "object"
+}
+}
+}
+}
+}
+}
+},
+/api/service-categories/{categoryId}: {
+put: {
+tags: [
+"salon-category-controller"
+],
+operationId: "updateCategory",
+parameters: [
+{
+name: "categoryId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/ServiceCategory"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "object"
+}
+}
+}
+}
+}
+}
+},
+/api/salon-resources/{id}: {
+put: {
+tags: [
+"salon-resource-controller"
+],
+operationId: "updateResource",
+parameters: [
+{
+name: "id",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/SalonResource"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseSalonResource"
+}
+}
+}
+}
+}
+}
+},
+/api/customer-address/{customerId}/update/{
+addressId
+}: {
+put: {
+tags: [
+"customer-address-controller"
+],
+operationId: "updateAddress",
+parameters: [
+{
+name: "customerId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+},
+{
+name: "addressId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/AddressDTO"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseAddressDTO"
+}
+}
+}
+}
+}
+}
+},
+/user/register: {
+post: {
+tags: [
+"user-controller"
+],
+operationId: "userRegister",
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/UserRegisterRequestDTO"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseUserRegisterResponseDTO"
+}
+}
+}
+}
+}
+}
+},
+/auth/login/verifyOTP: {
+post: {
+tags: [
+"auth-controller"
+],
+operationId: "verifyOtp",
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/VerifyOtpRequest"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseAuthResponseDTO"
+}
+}
+}
+}
+}
+}
+},
+/auth/login/token: {
+post: {
+tags: [
+"auth-controller"
+],
+operationId: "generateToken",
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/GenerateTokenRequest"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseAuthResponseDTO"
+}
+}
+}
+}
+}
+}
+},
+/auth/login/sendOTP: {
+post: {
+tags: [
+"auth-controller"
+],
+operationId: "sendOtp",
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/SendOtpRequest"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/SendOtpResponse"
+}
+}
+}
+}
+}
+}
+},
+/auth/login/refreshToken: {
+post: {
+tags: [
+"auth-controller"
+],
+operationId: "refreshToken",
+parameters: [
+{
+name: "Authorization",
+in: "header",
+required: true,
+schema: {
+type: "string"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseRefreshTokenResponseDTO"
+}
+}
+}
+}
+}
+}
+},
+/api/services: {
+get: {
+tags: [
+"salon-service-controller"
+],
+operationId: "getAllServices",
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseListCategoryResponse"
+}
+}
+}
+}
+}
+},
+post: {
+tags: [
+"salon-service-controller"
+],
+operationId: "createService",
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/SalonService"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "object"
+}
+}
+}
+}
+}
+}
+},
+/api/service-categories: {
+post: {
+tags: [
+"salon-category-controller"
+],
+operationId: "createCategory",
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/ServiceCategory"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "object"
+}
+}
+}
+}
+}
+}
+},
+/api/search/salon/search-by-services: {
+post: {
+tags: [
+"salon-search-controller"
+],
+operationId: "searchSalonsByServices",
+parameters: [
+{
+name: "latitude",
+in: "query",
+required: true,
+schema: {
+type: "number",
+format: "double"
+}
+},
+{
+name: "longitude",
+in: "query",
+required: true,
+schema: {
+type: "number",
+format: "double"
+}
+},
+{
+name: "distance",
+in: "query",
+required: true,
+schema: {
+type: "number",
+format: "double"
+}
+},
+{
+name: "unit",
+in: "query",
+required: true,
+schema: {
+type: "string"
+}
+}
+],
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/SalonSearchWithSelectedServicesRequest"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseListSalonSearchWithSelectedServicesResponseDTO"
+}
+}
+}
+}
+}
+}
+},
+/api/salon-resources: {
+post: {
+tags: [
+"salon-resource-controller"
+],
+operationId: "createResource",
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/SalonResource"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseSalonResource"
+}
+}
+}
+}
+}
+}
+},
+/api/payments/webhook/razorpay: {
+post: {
+tags: [
+"payment-webhook-controller"
+],
+operationId: "handleWebhook",
+parameters: [
+{
+name: "X-Razorpay-Signature",
+in: "header",
+required: true,
+schema: {
+type: "string"
+}
+}
+],
+requestBody: {
+content: {
+application/json: {
+schema: {
+type: "string"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "string"
+}
+}
+}
+}
+}
+}
+},
+/api/payments/verify/{bookingId}: {
+post: {
+tags: [
+"payment-controller"
+],
+operationId: "verify",
+parameters: [
+{
+name: "bookingId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/RazorpayVerifyPaymentRequestDTO"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "string"
+}
+}
+}
+}
+}
+}
+},
+/api/payments/refund/{bookingId}: {
+post: {
+tags: [
+"payment-controller"
+],
+operationId: "refund",
+parameters: [
+{
+name: "bookingId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+},
+{
+name: "reason",
+in: "query",
+required: true,
+schema: {
+type: "string"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "string"
+}
+}
+}
+}
+}
+}
+},
+/api/payments/order/{
+bookingId
+}: {
+post: {
+tags: [
+"payment-controller"
+],
+operationId: "createOrder",
+parameters: [
+{
+name: "bookingId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/RazorpayOrderResponseDTO"
+}
+}
+}
+}
+}
+}
+},
+/api/customer-address/{
+customerId
+}: {
+get: {
+tags: [
+"customer-address-controller"
+],
+operationId: "getAllAddresses",
+parameters: [
+{
+name: "customerId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseListAddressDTO"
+}
+}
+}
+}
+}
+},
+post: {
+tags: [
+"customer-address-controller"
+],
+operationId: "createAddress",
+parameters: [
+{
+name: "customerId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/Address"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseAddressDTO"
+}
+}
+}
+}
+}
+}
+},
+/api/bookings: {
+post: {
+tags: [
+"booking-controller"
+],
+operationId: "createBooking",
+requestBody: {
+content: {
+application/json: {
+schema: {
+$ref: "#/components/schemas/BookingRequestDTO"
+}
+}
+},
+required: true
+},
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/BookingResponseDTO"
+}
+}
+}
+}
+}
+}
+},
+/user/customer/{
+customerId
+}: {
+get: {
+tags: [
+"user-controller"
+],
+operationId: "getCustomerById",
+parameters: [
+{
+name: "customerId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseCustomer"
+}
+}
+}
+}
+}
+}
+},
+/user/customer/all: {
+get: {
+tags: [
+"user-controller"
+],
+operationId: "getAllCustomers",
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseListUserRegisterResponseDTO"
+}
+}
+}
+}
+}
+}
+},
+/user/all: {
+get: {
+tags: [
+"user-controller"
+],
+operationId: "getAllUsers",
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseListUserRegisterResponseDTO"
+}
+}
+}
+}
+}
+}
+},
+/api/services/salon/{salonId}: {
+get: {
+tags: [
+"salon-service-controller"
+],
+operationId: "getServicesBySalon",
+parameters: [
+{
+name: "salonId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+},
+{
+name: "pageNo",
+in: "query",
+required: false,
+schema: {
+type: "integer",
+format: "int32"
+}
+},
+{
+name: "pageSize",
+in: "query",
+required: false,
+schema: {
+type: "integer",
+format: "int32"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "object"
+}
+}
+}
+}
+}
+}
+},
+/api/services/salon/{
+salonId
+}/categories/{
+categoryId
+}: {
+get: {
+tags: [
+"salon-service-controller"
+],
+operationId: "getServicesByCategoryAnsSalon",
+parameters: [
+{
+name: "salonId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+},
+{
+name: "categoryId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "object"
+}
+}
+}
+}
+}
+}
+},
+/api/service-categories/salon/{
+salonId
+}: {
+get: {
+tags: [
+"salon-category-controller"
+],
+operationId: "getCategoryBySalonId",
+parameters: [
+{
+name: "salonId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "object"
+}
+}
+}
+}
+}
+}
+},
+/api/service-categories/all: {
+get: {
+tags: [
+"salon-category-controller"
+],
+operationId: "getAllCategories",
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseListServiceCategory"
+}
+}
+}
+}
+}
+}
+},
+/api/search/salons/nearby/suggestions: {
+get: {
+tags: [
+"salon-search-controller"
+],
+operationId: "searchNearbySalons",
+parameters: [
+{
+name: "latitude",
+in: "query",
+required: true,
+schema: {
+type: "number",
+format: "double"
+}
+},
+{
+name: "longitude",
+in: "query",
+required: true,
+schema: {
+type: "number",
+format: "double"
+}
+},
+{
+name: "distance",
+in: "query",
+required: true,
+schema: {
+type: "number",
+format: "double"
+}
+},
+{
+name: "keyword",
+in: "query",
+required: true,
+schema: {
+type: "string"
+}
+},
+{
+name: "unit",
+in: "query",
+required: false,
+schema: {
+type: "string",
+default: "KM"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "object"
+}
+}
+}
+}
+}
+}
+},
+/api/search/salons/by-name: {
+get: {
+tags: [
+"salon-search-controller"
+],
+operationId: "getSalonsByName",
+parameters: [
+{
+name: "salonName",
+in: "query",
+required: true,
+schema: {
+type: "string"
+}
+},
+{
+name: "latitude",
+in: "query",
+required: true,
+schema: {
+type: "number",
+format: "double"
+}
+},
+{
+name: "longitude",
+in: "query",
+required: true,
+schema: {
+type: "number",
+format: "double"
+}
+},
+{
+name: "unit",
+in: "query",
+required: false,
+schema: {
+type: "string",
+default: "KM"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "object"
+}
+}
+}
+}
+}
+}
+},
+/api/search/salon/nearby: {
+get: {
+tags: [
+"salon-search-controller"
+],
+operationId: "getNearbySalons",
+parameters: [
+{
+name: "latitude",
+in: "query",
+required: true,
+schema: {
+type: "number",
+format: "double"
+}
+},
+{
+name: "longitude",
+in: "query",
+required: true,
+schema: {
+type: "number",
+format: "double"
+}
+},
+{
+name: "distance",
+in: "query",
+required: true,
+schema: {
+type: "number",
+format: "double"
+}
+},
+{
+name: "unit",
+in: "query",
+required: false,
+schema: {
+type: "string",
+default: "KM"
+}
+},
+{
+name: "page",
+in: "query",
+required: false,
+schema: {
+type: "integer",
+format: "int32"
+}
+},
+{
+name: "size",
+in: "query",
+required: false,
+schema: {
+type: "integer",
+format: "int32"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "object"
+}
+}
+}
+}
+}
+}
+},
+/api/salon-resources/salon/{
+salonId
+}: {
+get: {
+tags: [
+"salon-resource-controller"
+],
+operationId: "getResourceBySalonId",
+parameters: [
+{
+name: "salonId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseSalonResource"
+}
+}
+}
+}
+}
+}
+},
+/api/customer-address/{
+customerId
+}/address/{
+addressId
+}: {
+get: {
+tags: [
+"customer-address-controller"
+],
+operationId: "getAddressById",
+parameters: [
+{
+name: "customerId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+},
+{
+name: "addressId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseAddressDTO"
+}
+}
+}
+}
+}
+}
+},
+/api/bookings/customer/{
+customerId
+}: {
+get: {
+tags: [
+"booking-controller"
+],
+operationId: "getUserBookings",
+parameters: [
+{
+name: "customerId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseListBookingResponseDTO"
+}
+}
+}
+}
+}
+}
+},
+/api/bookings/available-slots: {
+get: {
+tags: [
+"booking-controller"
+],
+operationId: "getAvailableSlots",
+parameters: [
+{
+name: "salonId",
+in: "query",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+},
+{
+name: "serviceIds",
+in: "query",
+required: true,
+schema: {
+type: "array",
+items: {
+type: "integer",
+format: "int64"
+}
+}
+},
+{
+name: "date",
+in: "query",
+required: true,
+schema: {
+type: "string",
+format: "date"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "array",
+items: {
+type: "string"
+}
+}
+}
+}
+}
+}
+}
+},
+/api/service-categories/{
+salonId
+}/category/{
+categoryId
+}: {
+delete: {
+tags: [
+"salon-category-controller"
+],
+operationId: "deleteCategory",
+parameters: [
+{
+name: "salonId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+},
+{
+name: "categoryId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+type: "object"
+}
+}
+}
+}
+}
+}
+},
+/api/salon-resources/{
+salonId
+}/resources/{
+resourceId
+}: {
+delete: {
+tags: [
+"salon-resource-controller"
+],
+operationId: "deleteResource",
+parameters: [
+{
+name: "salonId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+},
+{
+name: "resourceId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseVoid"
+}
+}
+}
+}
+}
+}
+},
+/api/customer-address/{
+customerId
+}/delete/{
+addressId
+}: {
+delete: {
+tags: [
+"customer-address-controller"
+],
+operationId: "deleteAddress",
+parameters: [
+{
+name: "customerId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+},
+{
+name: "addressId",
+in: "path",
+required: true,
+schema: {
+type: "integer",
+format: "int64"
+}
+}
+],
+responses: {
+200: {
+description: "OK",
+content: {
+*/*: {
+schema: {
+$ref: "#/components/schemas/ApiResponseString"
+}
+}
+}
+}
+}
+}
+}
+},
+components: {
+schemas: {
+UserUpdateRequestDTO: {
+type: "object",
+properties: {
+firstName: {
+type: "string"
+},
+lastName: {
+type: "string"
+},
+gender: {
+type: "string"
+},
+age: {
+type: "integer",
+format: "int32",
+maximum: 100,
+minimum: 18
+},
+email: {
+type: "string",
+format: "email",
+pattern: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+}
+}
+},
+ApiResponseUserRegisterResponseDTO: {
+type: "object",
+properties: {
+status: {
+type: "boolean"
+},
+message: {
+type: "string"
+},
+data: {
+$ref: "#/components/schemas/UserRegisterResponseDTO"
+}
+}
+},
+UserRegisterResponseDTO: {
+type: "object",
+properties: {
+id: {
+type: "integer",
+format: "int64"
+},
+firstName: {
+type: "string"
+},
+lastName: {
+type: "string"
+},
+gender: {
+type: "string"
+},
+age: {
+type: "integer",
+format: "int32"
+},
+experience: {
+type: "integer",
+format: "int32"
+},
+role: {
+type: "string",
+enum: [
+"CUSTOMER",
+"ADMIN",
+"CAPTAIN",
+"PARTNER"
+]
+},
+mobile: {
+type: "string"
+},
+email: {
+type: "string"
+},
+password: {
+type: "string"
+}
+}
+},
+UpdateServiceRequest: {
+type: "object",
+properties: {
+salonId: {
+type: "integer",
+format: "int64"
+},
+categoryId: {
+type: "integer",
+format: "int64"
+},
+serviceName: {
+type: "string"
+},
+durationMinutes: {
+type: "integer",
+format: "int32"
+},
+bufferMinutes: {
+type: "integer",
+format: "int32"
+},
+price: {
+type: "number"
+},
+isActive: {
+type: "boolean"
+}
+},
+required: [
+"salonId"
+]
+},
+ServiceCategory: {
+type: "object",
+properties: {
+categoryId: {
+type: "integer",
+format: "int64"
+},
+salonId: {
+type: "integer",
+format: "int64"
+},
+categoryName: {
+type: "string",
+maxLength: 100,
+minLength: 0
+},
+isActive: {
+type: "boolean"
+}
+},
+required: [
+"categoryName",
+"salonId"
+]
+},
+SalonResource: {
+type: "object",
+properties: {
+id: {
+type: "integer",
+format: "int64"
+},
+salonId: {
+type: "integer",
+format: "int64"
+},
+resourceCount: {
+type: "integer",
+format: "int32",
+minimum: 1
+}
+},
+required: [
+"resourceCount",
+"salonId"
+]
+},
+ApiResponseSalonResource: {
+type: "object",
+properties: {
+status: {
+type: "boolean"
+},
+message: {
+type: "string"
+},
+data: {
+$ref: "#/components/schemas/SalonResource"
+}
+}
+},
+AddressDTO: {
+type: "object",
+properties: {
+addressId: {
+type: "integer",
+format: "int64"
+},
+customerId: {
+type: "integer",
+format: "int64"
+},
+customerName: {
+type: "string",
+maxLength: 40,
+minLength: 0
+},
+houseNumber: {
+type: "string",
+maxLength: 20,
+minLength: 0
+},
+buildingName: {
+type: "string",
+maxLength: 40,
+minLength: 0
+},
+area: {
+type: "string",
+maxLength: 70,
+minLength: 0
+},
+landmark: {
+type: "string",
+maxLength: 40,
+minLength: 0
+},
+city: {
+type: "string",
+maxLength: 30,
+minLength: 0
+},
+state: {
+type: "string",
+maxLength: 40,
+minLength: 0
+},
+countryCode: {
+type: "string",
+maxLength: 10,
+minLength: 0
+},
+pinCode: {
+type: "string",
+maxLength: 10,
+minLength: 0,
+pattern: "^[1-9][0-9]{5}$"
+},
+latitude: {
+type: "number"
+},
+longitude: {
+type: "number"
+},
+addressType: {
+type: "string",
+enum: [
+"HOME",
+"WORK",
+"OTHER"
+]
+},
+labelName: {
+type: "string",
+maxLength: 100,
+minLength: 0
+},
+isDefault: {
+type: "boolean"
+}
+},
+required: [
+"addressType",
+"city",
+"countryCode",
+"customerId",
+"customerName",
+"houseNumber",
+"labelName",
+"pinCode",
+"state"
+]
+},
+ApiResponseAddressDTO: {
+type: "object",
+properties: {
+status: {
+type: "boolean"
+},
+message: {
+type: "string"
+},
+data: {
+$ref: "#/components/schemas/AddressDTO"
+}
+}
+},
+UserRegisterRequestDTO: {
+type: "object",
+properties: {
+firstName: {
+type: "string"
+},
+lastName: {
+type: "string"
+},
+gender: {
+type: "string"
+},
+age: {
+type: "string"
+},
+experience: {
+type: "integer",
+format: "int32",
+minimum: 0
+},
+role: {
+type: "string",
+enum: [
+"CUSTOMER",
+"ADMIN",
+"CAPTAIN",
+"PARTNER"
+]
+},
+mobile: {
+type: "string",
+minLength: 1,
+pattern: "$|^[6-9]\d{9}$"
+},
+email: {
+type: "string"
+},
+password: {
+type: "string",
+pattern: "$|^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+}
+},
+required: [
+"mobile",
+"role"
+]
+},
+VerifyOtpRequest: {
+type: "object",
+properties: {
+mobile: {
+type: "string",
+minLength: 1,
+pattern: "^$|^[6-9]\d{9}$"
+},
+role: {
+type: "string",
+enum: [
+"CUSTOMER",
+"ADMIN",
+"CAPTAIN",
+"PARTNER"
+]
+},
+otp: {
+type: "string",
+minLength: 1,
+pattern: "$|^\d{4}$"
+}
+},
+required: [
+"mobile",
+"otp",
+"role"
+]
+},
+ApiResponseAuthResponseDTO: {
+type: "object",
+properties: {
+status: {
+type: "boolean"
+},
+message: {
+type: "string"
+},
+data: {
+$ref: "#/components/schemas/AuthResponseDTO"
+}
+}
+},
+AuthResponseDTO: {
+type: "object",
+properties: {
+userId: {
+type: "integer",
+format: "int64"
+},
+customerId: {
+type: "integer",
+format: "int64"
+},
+accessToken: {
+type: "string"
+},
+refreshToken: {
+type: "string"
+},
+isProfileComplete: {
+type: "boolean"
+}
+}
+},
+GenerateTokenRequest: {
+type: "object",
+properties: {
+mobile: {
+type: "string",
+minLength: 1,
+pattern: "^[6-9]\d{9}$"
+}
+},
+required: [
+"mobile"
+]
+},
+SendOtpRequest: {
+type: "object",
+properties: {
+mobile: {
+type: "string",
+minLength: 1,
+pattern: "^$|^[6-9]\d{9}$"
+},
+role: {
+type: "string",
+enum: [
+"CUSTOMER",
+"ADMIN",
+"CAPTAIN",
+"PARTNER"
+]
+}
+},
+required: [
+"mobile",
+"role"
+]
+},
+SendOtpResponse: {
+type: "object",
+properties: {
+message: {
+type: "string"
+},
+expiryMinutes: {
+type: "integer",
+format: "int32"
+}
+}
+},
+ApiResponseRefreshTokenResponseDTO: {
+type: "object",
+properties: {
+status: {
+type: "boolean"
+},
+message: {
+type: "string"
+},
+data: {
+$ref: "#/components/schemas/RefreshTokenResponseDTO"
+}
+}
+},
+RefreshTokenResponseDTO: {
+type: "object",
+properties: {
+accessToken: {
+type: "string"
+},
+refreshToken: {
+type: "string"
+}
+}
+},
+SalonService: {
+type: "object",
+properties: {
+serviceId: {
+type: "integer",
+format: "int64"
+},
+salonId: {
+type: "integer",
+format: "int64"
+},
+categoryId: {
+type: "integer",
+format: "int64"
+},
+serviceName: {
+type: "string",
+maxLength: 100,
+minLength: 0
+},
+durationMinutes: {
+type: "integer",
+format: "int32"
+},
+bufferMinutes: {
+type: "integer",
+format: "int32"
+},
+price: {
+type: "number",
+minimum: 0
+},
+isActive: {
+type: "boolean"
+}
+},
+required: [
+"categoryId",
+"durationMinutes",
+"price",
+"salonId",
+"serviceName"
+]
+},
+SalonSearchWithSelectedServicesRequest: {
+type: "object",
+properties: {
+latitude: {
+type: "number",
+format: "double",
+maximum: 90,
+minimum: -90
+},
+longitude: {
+type: "number",
+format: "double",
+maximum: 180,
+minimum: -180
+},
+distance: {
+type: "number",
+format: "double"
+},
+unit: {
+type: "string",
+minLength: 1,
+pattern: "KM|M"
+},
+serviceNames: {
+type: "array",
+items: {
+type: "string",
+minLength: 1
+},
+minItems: 1
+}
+},
+required: [
+"distance",
+"latitude",
+"longitude",
+"serviceNames",
+"unit"
+]
+},
+ApiResponseListSalonSearchWithSelectedServicesResponseDTO: {
+type: "object",
+properties: {
+status: {
+type: "boolean"
+},
+message: {
+type: "string"
+},
+data: {
+type: "array",
+items: {
+$ref: "#/components/schemas/SalonSearchWithSelectedServicesResponseDTO"
+}
+}
+}
+},
+SalonSearchWithSelectedServicesResponseDTO: {
+type: "object",
+properties: {
+salonId: {
+type: "integer",
+format: "int64"
+},
+salonName: {
+type: "string"
+},
+salonImageUrl: {
+type: "string"
+},
+distance: {
+type: "number",
+format: "double"
+},
+unit: {
+type: "string"
+},
+totalPrice: {
+type: "number"
+},
+serviceDetails: {
+type: "array",
+items: {
+$ref: "#/components/schemas/ServiceDTO"
+}
+}
+}
+},
+ServiceDTO: {
+type: "object",
+properties: {
+serviceName: {
+type: "string"
+},
+price: {
+type: "number"
+}
+}
+},
+RazorpayVerifyPaymentRequestDTO: {
+type: "object",
+properties: {
+razorpayOrderId: {
+type: "string"
+},
+razorpayPaymentId: {
+type: "string"
+},
+razorpaySignature: {
+type: "string"
+}
+}
+},
+RazorpayOrderResponseDTO: {
+type: "object",
+properties: {
+keyId: {
+type: "string"
+},
+orderId: {
+type: "string"
+},
+amount: {
+type: "integer",
+format: "int64"
+},
+currency: {
+type: "string"
+}
+}
+},
+Address: {
+type: "object",
+properties: {
+addressId: {
+type: "integer",
+format: "int64"
+},
+customerId: {
+type: "integer",
+format: "int64"
+},
+customerName: {
+type: "string",
+maxLength: 40,
+minLength: 0
+},
+houseNumber: {
+type: "string",
+maxLength: 20,
+minLength: 0
+},
+buildingName: {
+type: "string",
+maxLength: 40,
+minLength: 0
+},
+area: {
+type: "string",
+maxLength: 70,
+minLength: 0
+},
+landmark: {
+type: "string",
+maxLength: 40,
+minLength: 0
+},
+city: {
+type: "string",
+maxLength: 30,
+minLength: 0
+},
+state: {
+type: "string",
+maxLength: 40,
+minLength: 0
+},
+countryCode: {
+type: "string",
+maxLength: 10,
+minLength: 0
+},
+pinCode: {
+type: "string",
+maxLength: 10,
+minLength: 0,
+pattern: "^[1-9][0-9]{5}$"
+},
+latitude: {
+type: "number",
+maximum: 90,
+minimum: -90
+},
+longitude: {
+type: "number",
+maximum: 180,
+minimum: -180
+},
+addressType: {
+type: "string",
+enum: [
+"HOME",
+"WORK",
+"OTHER"
+]
+},
+labelName: {
+type: "string",
+maxLength: 100,
+minLength: 0
+},
+isDefault: {
+type: "boolean"
+},
+createdAt: {
+type: "string",
+format: "date-time"
+},
+updatedAt: {
+type: "string",
+format: "date-time"
+}
+},
+required: [
+"addressType",
+"city",
+"customerName",
+"houseNumber",
+"labelName",
+"latitude",
+"longitude",
+"pinCode",
+"state"
+]
+},
+BookingRequestDTO: {
+type: "object",
+properties: {
+salonId: {
+type: "integer",
+format: "int64"
+},
+serviceIds: {
+type: "array",
+items: {
+type: "integer",
+format: "int64"
+}
+},
+startTime: {
+type: "string",
+format: "date-time"
+}
+}
+},
+BookingResponseDTO: {
+type: "object",
+properties: {
+bookingId: {
+type: "integer",
+format: "int64"
+},
+finalAmount: {
+type: "number"
+},
+status: {
+type: "string"
+},
+startTime: {
+type: "string",
+format: "date-time"
+},
+createdDate: {
+type: "string",
+format: "date-time"
+},
+salonName: {
+type: "string"
+},
+refundAmount: {
+type: "string"
+},
+refundTier: {
+type: "string"
+}
+}
+},
+ApiResponseCustomer: {
+type: "object",
+properties: {
+status: {
+type: "boolean"
+},
+message: {
+type: "string"
+},
+data: {
+$ref: "#/components/schemas/Customer"
+}
+}
+},
+Customer: {
+type: "object",
+properties: {
+customerId: {
+type: "integer",
+format: "int64"
+},
+users: {
+$ref: "#/components/schemas/Users"
+},
+createdDate: {
+type: "string",
+format: "date-time"
+}
+}
+},
+Users: {
+type: "object",
+properties: {
+id: {
+type: "integer",
+format: "int64"
+},
+firstName: {
+type: "string"
+},
+lastName: {
+type: "string"
+},
+gender: {
+type: "string"
+},
+age: {
+type: "integer",
+format: "int32"
+},
+experience: {
+type: "integer",
+format: "int32"
+},
+role: {
+type: "string",
+enum: [
+"CUSTOMER",
+"ADMIN",
+"CAPTAIN",
+"PARTNER"
+]
+},
+mobile: {
+type: "string"
+},
+email: {
+type: "string"
+},
+password: {
+type: "string"
+},
+createdDate: {
+type: "string",
+format: "date-time"
+},
+lastModified: {
+type: "string",
+format: "date-time"
+},
+profileComplete: {
+type: "boolean"
+}
+}
+},
+ApiResponseListUserRegisterResponseDTO: {
+type: "object",
+properties: {
+status: {
+type: "boolean"
+},
+message: {
+type: "string"
+},
+data: {
+type: "array",
+items: {
+$ref: "#/components/schemas/UserRegisterResponseDTO"
+}
+}
+}
+},
+ApiResponseListCategoryResponse: {
+type: "object",
+properties: {
+status: {
+type: "boolean"
+},
+message: {
+type: "string"
+},
+data: {
+type: "array",
+items: {
+$ref: "#/components/schemas/CategoryResponse"
+}
+}
+}
+},
+CategoryResponse: {
+type: "object",
+properties: {
+categoryName: {
+type: "string"
+},
+services: {
+type: "array",
+items: {
+type: "string"
+}
+}
+}
+},
+ApiResponseListServiceCategory: {
+type: "object",
+properties: {
+status: {
+type: "boolean"
+},
+message: {
+type: "string"
+},
+data: {
+type: "array",
+items: {
+$ref: "#/components/schemas/ServiceCategory"
+}
+}
+}
+},
+ApiResponseListAddressDTO: {
+type: "object",
+properties: {
+status: {
+type: "boolean"
+},
+message: {
+type: "string"
+},
+data: {
+type: "array",
+items: {
+$ref: "#/components/schemas/AddressDTO"
+}
+}
+}
+},
+ApiResponseListBookingResponseDTO: {
+type: "object",
+properties: {
+status: {
+type: "boolean"
+},
+message: {
+type: "string"
+},
+data: {
+type: "array",
+items: {
+$ref: "#/components/schemas/BookingResponseDTO"
+}
+}
+}
+},
+ApiResponseVoid: {
+type: "object",
+properties: {
+status: {
+type: "boolean"
+},
+message: {
+type: "string"
+},
+data: {}
+}
+},
+ApiResponseString: {
+type: "object",
+properties: {
+status: {
+type: "boolean"
+},
+message: {
+type: "string"
+},
+data: {
+type: "string"
+}
+}
+}
+},
+securitySchemes: {
+bearerAuth: {
+type: "http",
+name: "Authorization",
+in: "header",
+scheme: "bearer",
+bearerFormat: "JWT"
+}
+}
+}
+}

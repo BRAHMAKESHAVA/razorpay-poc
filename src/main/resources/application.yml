@@ -1,0 +1,73 @@
+server:
+  port: ${SERVER_PORT:8080}
+  address: 0.0.0.0
+  tomcat:
+    threads:
+      max: 250
+      min-spare: 50
+
+spring:
+  profiles:
+    active: test
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/my_database}
+    username: ${DB_USERNAME:testing}
+    password: ${DB_PASSWORD:1234567890}
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 10
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+
+  web:
+    resources:
+      add-mappings: false
+
+logging:
+  level:
+    root: INFO
+    org.backend: DEBUG
+    org.springframework.security: DEBUG
+  pattern:
+    console: "%green(%d{HH:mm:ss.SSS}) %highlight(%-5level) %cyan([%thread]) %magenta(%logger{15}) - %msg%n"
+
+jwt:
+  secret: ${JWT_SECRET:GE+7Djq+PZMw+UAz73IsRTzDu3S+kTONJAbhvWHjiOEg+T+mdMBgpqv6uXL+u73cRJ9EQX8aSw86UCl8SCr++4OFGSfMepD8+pgAKAnM9qPLijTi8KNWVdEXGixBz/u5Cmb/ahhJI1+sxKGwwpcRLgL5XPS+wkgnHxFFfjq3emR3tej+oZBhT3X6lIrtOH4VXhcD0WFOa6Nu64PmiqCXEA==}
+  access-token-expiration: ${JWT_ACCESS_EXPIRATION:172800000}
+  refresh-token-expiration: ${JWT_REFRESH_EXPIRATION:604800000}
+
+app:
+  cors:
+    allowed-origins:
+      - "*"
+
+twilio:
+  account:
+    sid: ${TWILIO_SID}
+  auth:
+    token: ${TWILIO_AUTH_TOKEN}
+  sms:
+    from: ${TWILIO_SMS_FROM}
+  whatsapp:
+    sandbox: ${TWILIO_WHATSAPP_SANDBOX}
+
+address:
+  max:
+    count: ${ADDRESS_MAX_COUNT:5}
